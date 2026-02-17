@@ -1,25 +1,20 @@
 const express = require('express');
 const app = express();
+const userRouter = require('./routes/user');
+const wordRouter = require('./routes/words');
+
+
+
+app.set('view engine', 'ejs');
+app.use(express.static("public"));
+app.use('/users', userRouter);
+app.use('/words', wordRouter);
 
 app.get('/', 
     (req, res)=>{
         console.log('Here');
-        res.send('Hi');
+        res.render('index', {username: "George"});
     });
-
-app.get('/potato',
-    (req, res)=>{
-        console.log('There');
-        res.send('<p>Here are your potatoes</p>')
-    }
-)
-app.get('/download',
-    (req, res)=>{
-        console.log('Downloading');
-        res.download(server.js);
-    }
-)
-
 
 
 app.listen(3030);
