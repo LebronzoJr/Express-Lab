@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Words</title>
+</head>
+<body>
+    <h1>Welcome to Lebron's word list</h1>
+    <h3>This is where all of the words from my word of the day list are stored.</h3>
+    <% 
+        let wordlist = locals.allwords;
+        for item(item of wordlist{
+            let {word, part, definition} = item;
+        })
+    %>
+    <ol>
+        <% for (let i = 0; i < wordsArray.length, i++) {%>
+            <li><%= word %> - <%= part %> - <%= definition %>  </li>
+        <% } %> 
+
+    </ol>
+</body>
+</html>

@@ -13,6 +13,12 @@ router.get('/wotd', async (req, res) =>{
     //Do something with that function up here
 });
 
+router.get('/allwords', async(req,res)=>{
+    const allWords = await getAllWords();
+    res.render('allwords', {allwords:allWords});
+    
+});
+
 let getWordFromDictionary = async ()=>{
     try{
         const data = await readFile('resources/allwords.txt', 'utf8');
@@ -22,6 +28,22 @@ let getWordFromDictionary = async ()=>{
         let wordArray = randomLine.split('\t');
         console.log(wordArray);
         return wordArray;
+    } catch(err){
+        console.log("There was an error reading the file:", err);
+    }
+};
+
+let getAllWords = async ()=>{
+    try{
+        const data = await readFile('resources/allwords.txt', 'utf8');
+        let lines = data.split('\n');
+        let allwords = [];;
+        let subObj = {word:word, part:part, definition:definition};
+        allwords.push(subobj);
+        for(line of lines){
+            let [word, part, definition] = line.split('\t')
+        }
+        return allwords
     } catch(err){
         console.log("There was an error reading the file:", err);
     }
